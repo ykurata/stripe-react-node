@@ -24,7 +24,14 @@ function App() {
         >
           Learn React
         </a>
-        <StripeCheckout stripeKey="" token="" name="Buy react"></StripeCheckout>
+        <StripeCheckout
+          stripeKey={process.env.REACT_APP_KEY}
+          token={makePayment}
+          name="Buy react"
+          amount={product.price * 100}
+        >
+          <button className="btn-large blue">Buy Now $ {product.price}</button>
+        </StripeCheckout>
       </header>
     </div>
   );
