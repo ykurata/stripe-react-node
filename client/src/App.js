@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import logo from "./logo.svg";
 import "./App.css";
 import StripeCheckout from "react-stripe-checkout";
@@ -19,6 +20,15 @@ function App() {
       "Content-Type": "application/json",
     };
 
+    // return axios
+    //   .post("/payment", body)
+    //   .then((response) => {
+    //     console.log("Response ", response);
+    //     const { status } = response;
+    //     console.log("Status ", status);
+    //   })
+    //   .catch((err) => console.log(err));
+
     return fetch("http://localhost:8282/payment", {
       method: "POST",
       headers,
@@ -31,6 +41,17 @@ function App() {
       })
       .catch((err) => console.log(err));
   };
+
+  // useEffect(() => {
+  //   axios
+  //     .get("/")
+  //     .then((res) => {
+  //       console.log("from 8282");
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // });
 
   return (
     <div className="App">

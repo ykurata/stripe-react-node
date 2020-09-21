@@ -1,8 +1,7 @@
 const cors = require("cors");
 const express = require("express");
 const stripe = require("stripe")("sk_test_IllR1H3Om8oeJnGT7UjtTCIS00fS8kHN59");
-const { uuidv4 } = require("uuid");
-
+const { uuid } = require("uuidv4");
 const app = express();
 
 // middleware
@@ -18,7 +17,7 @@ app.post("/payment", (req, res) => {
   const { product, token } = req.body;
   console.log("product", product);
   console.log("price", product.price);
-  const idempontencyKey = uuidv4();
+  const idempontencyKey = uuid();
 
   return stripe.customers
     .create({
